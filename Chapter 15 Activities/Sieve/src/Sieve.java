@@ -13,7 +13,7 @@ public class Sieve
         int n = in.nextInt();
 
         // Your work goes here
-        . . .
+        
 
 
 
