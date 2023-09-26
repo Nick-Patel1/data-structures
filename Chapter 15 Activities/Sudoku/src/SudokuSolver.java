@@ -45,7 +45,16 @@ public class SudokuSolver
         }
 
         // create the list of sets for each row (this.rows)
-        
+        Set<Integer> num = new HashSet<>();
+        for (int row = 0; row < N; row++) 
+        {
+            for (int col = 0; col < N; col++) 
+            {  
+                Integer i = Integer.valueOf(this.grid[row][col]);
+                num.add(i);
+            }
+            rows.add(num);
+        }
 
         // create the list of sets for each col (this.cols)
         
@@ -59,7 +68,7 @@ public class SudokuSolver
         
 
         // create a hash set for [1..9] (this.nums)
-        
+        nums = new HashSet<>();
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) 
