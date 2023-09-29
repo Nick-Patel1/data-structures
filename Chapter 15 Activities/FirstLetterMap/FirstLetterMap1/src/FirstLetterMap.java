@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+
 /**
  * Read all words from a file and add them to a map
  * whose keys are the first letters of the words and
@@ -16,25 +17,31 @@ public class FirstLetterMap
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-
+            
             // Create your map here
-            ...
+            Map<String, String> map = new HashMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
+                String s = String.valueOf(c);
 
                 // Update the map here
                 // Use the Java 8 merge method
-                . . .
+                map.put(s, word);
+
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
-        } catch (FileNotFoundException e)
+            for (String key: map.keySet())
+            {
+                System.out.println("Name: "+ key + " Grade: "+map.get(key));
+            }
+        } 
+        catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
         }
@@ -53,5 +60,5 @@ public class FirstLetterMap
         }
         return r.toLowerCase();
     }
-
+    
 }
