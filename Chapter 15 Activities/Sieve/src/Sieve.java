@@ -28,11 +28,14 @@ public class Sieve
         for (int x = 2; x < n/2; x++)
         {
             iterator = numbers.iterator();
-            for (int y = 2; y <= numbers.size()+1; y++){
-                
+            for (int y = 2; y <= numbers.size()+1; y++)
+            {
                 num2 = iterator.next();
                 if(num2 %x==0 && num2!=x)
-                    iterator.remove();}
+                {
+                    iterator.remove();
+                }
+            }
         }
         System.out.println(numbers);
     }

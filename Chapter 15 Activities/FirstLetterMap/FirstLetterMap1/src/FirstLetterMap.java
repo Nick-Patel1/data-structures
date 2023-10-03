@@ -17,28 +17,24 @@ public class FirstLetterMap
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-            
             // Create your map here
-            Map<String, String> map = new HashMap<>();
+            Map<String, Set<String>> map = new TreeMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
-                String s = String.valueOf(c);
 
                 // Update the map here
                 // Use the Java 8 merge method
-                map.put(s, word);
-
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            for (String key: map.keySet())
+            for (char key : map.keySet())
             {
-                System.out.println("Name: "+ key + " Grade: "+map.get(key));
+                System.out.println(key + ": " + map.get(key));
             }
         } 
         catch (FileNotFoundException e)
