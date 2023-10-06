@@ -45,15 +45,8 @@ public class Driveway
     public void remove(int licensePlate)
     {
         // Complete this method
-        while (driveway.contains(licensePlate))
-        {
-            street.push(driveway.pop());
-        }
-        street.pop();
-        while (street.size() > 0)
-        {
-            driveway.push(street.pop());
-        }
+        Integer n = driveway.pop();
+        street.push(n);
     }
 
     /**
@@ -63,16 +56,16 @@ public class Driveway
     {
         System.out.println("In Driveway, starting at first in (one license plate per line):");
         // Print the cars in the driveway here
-        for (Integer car : driveway)
+        for (Integer n : driveway)
         {
-            System.out.println(car);
+            System.out.println(n);
         }
 
         System.out.println("In Street, starting at first in (one license plate per line):");
         // Print the cars in the street here
-        for (Integer car : street)
+        for (Integer n : street)
         {
-            System.out.println(car);
+            System.out.println(n);
         }
 
     }

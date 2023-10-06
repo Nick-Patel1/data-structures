@@ -29,7 +29,7 @@ public class StringLengthMap
                 // Modify Worked Example 15.1
                 if (map.get(len) == null)
                 {
-                    map.put(len, new TreeSet<>()); 
+                    map.put(len, new TreeSet<String>()); 
                     map.get(len).add(word);
                 }
                 else 
@@ -42,7 +42,7 @@ public class StringLengthMap
             // Use this format: 1: i, a, i
             for (int key : map.keySet())
             {
-                System.out.println(key + ": " + map.get(key));
+                System.out.println(key +": "+ map.get(key));
             } 
         }
         catch (FileNotFoundException e)
