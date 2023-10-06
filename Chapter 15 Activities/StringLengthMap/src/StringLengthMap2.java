@@ -18,7 +18,7 @@ public class StringLengthMap2
         try (Scanner in = new Scanner(new File(filename)))
         {
             // Create your map here
-            
+            Map<Integer, Set<String>> map = new TreeMap<>();
 
             while (in.hasNext())
             {
@@ -27,12 +27,18 @@ public class StringLengthMap2
 
                 // Update the map here
                 // Use the Java 8 merge() method
-                
+                Set<String> set = new TreeSet<>();
+                set.add(word);
+                map.merge(len, set, (oldSet, newSet) -> {oldSet.addAll(newSet); 
+                    return oldSet;});
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
-
+            for (int key : map.keySet())
+            {
+                System.out.println(key + ": " + map.get(key));
+            } 
         } 
         catch (FileNotFoundException e)
         {
