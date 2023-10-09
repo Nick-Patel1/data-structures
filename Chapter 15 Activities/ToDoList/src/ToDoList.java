@@ -1,6 +1,7 @@
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
+
 /**
  * Implement a to do list. Tasks have a priority between 
  * 1 and 9 (with 1 being most urgent), and a description.
@@ -45,7 +46,8 @@ public class ToDoList
             if (option.startsWith("add"))
             {
                 addTask(option);
-            } else if (option.equals("next"))
+            } 
+            else if (option.equals("next"))
             {
                 nextTask();
             }
@@ -62,8 +64,6 @@ public class ToDoList
     {
         // Complete this method
         toDo.add(new Task(Integer.parseInt(optionStr.substring(4,5)), optionStr.substring(6)));
-            
-            
     }
 
     /**
@@ -72,18 +72,20 @@ public class ToDoList
     */
     public void nextTask()
     {
-    
         Task next = null;
         
         // Complete this method
-    
+        if(toDo.size() > 0)
+        {
+            next = toDo.remove();
+        }
         
         
-        
-        if (toDo.size()>0)
+        if (toDo.size() > 0)
         {
             System.out.println("There are no tasks in the list.");
-        } else
+        } 
+        else
         {
             System.out.println(next.getDescription());
         }

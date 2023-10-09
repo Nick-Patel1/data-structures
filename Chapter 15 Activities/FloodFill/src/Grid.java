@@ -4,8 +4,9 @@ public class Grid
 {
     private static final int SIZE = 10;
     int[][] pixels = new int[SIZE][SIZE];
-    Pair pair = new Pair(SIZE, SIZE);
-    Stack<Integer> stack = new Stack<>();
+    Stack<Pair> stack = new Stack<>();
+    int count = 1;
+    int adj = 0;
 
     /**
      * Flood fill, starting with the given row and column.
