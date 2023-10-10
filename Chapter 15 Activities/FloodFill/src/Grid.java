@@ -5,24 +5,43 @@ public class Grid
     private static final int SIZE = 10;
     int[][] pixels = new int[SIZE][SIZE];
     Stack<Pair> stack = new Stack<>();
-    int count = 1;
-    int adj = 0;
 
     /**
      * Flood fill, starting with the given row and column.
     */
     public void floodfill(int row, int column)
     {
-        for (int r = 0; r < SIZE; r++)
+        stack.push(new Pair(row, column));
+
+        int count = 1;
+    
+        while (stack.size() > 0)
         {
-            for (int c = 0; c < SIZE; c++)
+            Pair pair = stack.pop();
+            int r = pair.getRow();
+            int c = pair.getColumn();
+    
+            if (pixels[r][c] == 0)
             {
-                pixels[r][c] = 0;
-                int num = pixels[r][c];
-                stack.push(num);
+                pixels[r][c] = count++;
+                if (r > 0 && pixels[r - 1][c] == 0) 
+                {
+                    stack.push(new Pair(r - 1, c)); 
+                }
+                if (c < SIZE - 1 && pixels[r][c + 1] == 0) 
+                {
+                    stack.push(new Pair(r, c + 1)); 
+                }
+                if (r < SIZE - 1 && pixels[r + 1][c] == 0) 
+                {
+                    stack.push(new Pair(r + 1, c)); 
+                }
+                if (c > 0 && pixels[r][c - 1] == 0) 
+                {
+                    stack.push(new Pair(r, c - 1)); 
+                }
             }
         }
-        
     }
 
     @Override
