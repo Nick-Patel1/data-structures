@@ -28,12 +28,12 @@ public class HTMLChecker
             while (in.hasNext())
             {
                 String tag = in.next();
-                if (tag.startsWith("</"))
+                if (tag.contains("</"))
                 {
                     tags.pop();
                     tag.substring(2, tag.length() - 1);
                 }
-                else if (tag.startsWith("<"))
+                else if (tag.contains("<"))
                 {
                     tags.push(tag.substring(1, tag.length() - 1));
                 }
