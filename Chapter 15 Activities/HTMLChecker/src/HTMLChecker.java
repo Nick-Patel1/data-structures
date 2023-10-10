@@ -23,7 +23,30 @@ public class HTMLChecker
         try (Scanner in = new Scanner(new File(filename)))
         {
             // Your code goes here
-            
+            Stack<String> tags = new Stack<>();
+
+            while (in.hasNext())
+            {
+                String tag = in.next();
+                if (tag.startsWith("</"))
+                {
+                    tags.pop();
+                    tag.substring(2, tag.length() - 1);
+                }
+                else if (tag.startsWith("<"))
+                {
+                    tags.push(tag.substring(1, tag.length() - 1));
+                }
+            }
+        
+            if(tags.size() > 0)
+            {
+                System.out.println("HTML tags are not properly nested");
+            }
+            else
+            {
+                System.out.println("HTML tags are properly nested.");
+            }
         } 
         catch (FileNotFoundException e)
         {
