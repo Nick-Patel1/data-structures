@@ -24,7 +24,7 @@ public class LinkedList
     */
     public int size()
     {
-        . . .
+        
     }
 
     /**
