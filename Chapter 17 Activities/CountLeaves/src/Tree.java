@@ -26,6 +26,8 @@ public class Tree
         }
     }
 
+
+
     /**
         Constructs an empty tree.
     */
@@ -64,4 +66,29 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+    /*
+     * count leaves
+     */
+    public int leafCount(Node n)
+    {
+        if (n.size() == 1){
+            return 1;
+        }
+
+        int total = 0;
+
+        for (Node child : n.children) 
+        { 
+            
+            total += leafCount(child);
+            
+        }
+
+        return total;
+    }
+
+    public int leafCount()
+    {
+        return leafCount(root);
+    }
 }
