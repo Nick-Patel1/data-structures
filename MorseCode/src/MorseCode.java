@@ -84,8 +84,18 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        BTreePrinter tree = new BTreePrinter();
-        
+        for (int i = 0; i < code.length() ; i++)
+        {
+            String l = parse(code.charAt(i));
+            if (l.equals("."))
+            {
+                decodeTree;
+            }
+            else 
+            {
+
+            }
+        }
     }
 
     /**
