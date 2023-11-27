@@ -84,18 +84,27 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        for (int i = 0; i < code.length() ; i++)
+        TreeNode current = decodeTree;
+        for (int i = 0; i < code.length(); i++) 
         {
-            String l = parse(code.charAt(i));
-            if (l.equals("."))
+            if (code.charAt(i) == DOT) 
             {
-                decodeTree;
-            }
-            else 
+                if (current.getLeft() == null) 
+                {
+                    current.setLeft(new TreeNode(" "));
+                }
+                current = current.getLeft();
+            } 
+            else if (code.charAt(i) == DASH) 
             {
-
+                if (current.getRight() == null) 
+                {
+                    current.setRight(new TreeNode(" "));
+                }
+                current = current.getRight();
             }
         }
+        current.setValue(letter);
     }
 
     /**
@@ -108,9 +117,20 @@ public class MorseCode
     {
         StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        text = text.toUpperCase();
+        for (int i = 0; i < text.length(); i++) 
+        {
+            char letter = text.charAt(i);
+            if (codeMap.containsKey(letter)) 
+            {
+                String code = codeMap.get(letter);
+                morse.append(code + " ");
+            } 
+            else 
+            {
+                morse.append(" ");
+            }
+        }
 
         return morse.toString();
     }
@@ -125,9 +145,30 @@ public class MorseCode
     {
         StringBuffer text = new StringBuffer(100);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        String[] words = morse.split("[\\s]");
+        for (String word : words) 
+        {
+            if (word.equals(" ")) 
+            {
+                text.append(" ");
+            } 
+            else 
+            {
+                TreeNode current = decodeTree;
+                for (int i = 0; i < word.length(); i++)  
+                {
+                    if (word.charAt(i) == DOT)
+                    {
+                        current = current.getLeft();
+                    }
+                    else if (word.charAt(i) == DASH)
+                    {
+                        current = current.getRight();
+                    }
+                }
+                text.append(current.getValue());
+            }
+        }
 
         return text.toString();
     }
